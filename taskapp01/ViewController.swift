@@ -49,6 +49,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
     }
     
+    // 各セルを選択した時に実行されるメソッド
+    func tableView(tableView: UITableView, didSelectRowAtIndexPathindexPath: NSIndexPath) {
+        performSegueWithIdentifier("cellSegue",sender: nil) // ←追加する
+    }
 
 }
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A62B00621C7C4510008AAD36 /* InputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62B00611C7C4510008AAD36 /* InputViewController.swift */; };
 		A6D3D0591C7995500047F025 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D3D0581C7995500047F025 /* AppDelegate.swift */; };
 		A6D3D05B1C7995500047F025 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D3D05A1C7995500047F025 /* ViewController.swift */; };
 		A6D3D05E1C7995500047F025 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6D3D05C1C7995500047F025 /* Main.storyboard */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A62B00611C7C4510008AAD36 /* InputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputViewController.swift; sourceTree = "<group>"; };
 		A6D3D0551C7995500047F025 /* taskapp01.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = taskapp01.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6D3D0581C7995500047F025 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A6D3D05A1C7995500047F025 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -56,6 +58,7 @@
 			children = (
 				A6D3D0581C7995500047F025 /* AppDelegate.swift */,
 				A6D3D05A1C7995500047F025 /* ViewController.swift */,
+				A62B00611C7C4510008AAD36 /* InputViewController.swift */,
 				A6D3D05C1C7995500047F025 /* Main.storyboard */,
 				A6D3D05F1C7995500047F025 /* Assets.xcassets */,
 				A6D3D0611C7995500047F025 /* LaunchScreen.storyboard */,
@@ -135,6 +138,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A62B00621C7C4510008AAD36 /* InputViewController.swift in Sources */,
 				A6D3D05B1C7995500047F025 /* ViewController.swift in Sources */,
 				A6D3D0591C7995500047F025 /* AppDelegate.swift in Sources */,
 			);
@@ -284,6 +288,7 @@
 				A6D3D0691C7995500047F025 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
