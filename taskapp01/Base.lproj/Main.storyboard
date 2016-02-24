@@ -44,7 +44,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="3La-xG-7TK" id="lny-4N-0ep"/>
-                        <segue destination="G8r-29-YQy" kind="show" id="XAG-nN-EuD"/>
+                        <segue destination="G8r-29-YQy" kind="show" identifier="cellSegue" id="fkV-AW-IZr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -144,6 +144,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="XAG-nN-EuD"/>
+        <segue reference="fkV-AW-IZr"/>
     </inferredMetricsTieBreakers>
 </document>

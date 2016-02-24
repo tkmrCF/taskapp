@@ -63,8 +63,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     // MARK: UITableViewDataSourceプロトコルのメソッド
     // データの数（＝セルの数）を返すメソッド
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // return 0               ***cheng
-        return taskArray.count  // ←追加する by 6.6
+        return taskArray.count
     }
     
     // 各セルの内容を返すメソッド
@@ -90,10 +89,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     // MARK: UITableViewDelegateプロトコルのメソッド
     // 各セルを選択した時に実行されるメソッド（セルをタップした時）
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        print("OK-Tap")
         /****** add by『5.3 ViewControllerからInputViewControllerに遷移させる』*/
         performSegueWithIdentifier("cellSegue",sender: nil) // ←追加する
         /** セルをタップした時と　+ボタンをタップした時とを区別するため **/
+        print("OK-Tap-End")
     }
+        /** ！！！！　2016/02/24
+            『追加したsegueを選択した状態でユーテリティエリアを開き、segueのIdentifierをcellSegueに設定します。』をミスったため、落ちた。 **/
     
     // セルが削除が可能なことを伝えるメソッド
     func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath)-> UITableViewCellEditingStyle {
@@ -116,15 +119,21 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     
     /***** add by『6.7 画面遷移する時にデータを渡す』*/
-    // segue で画面遷移するに呼ばれる
+    // segue で画面遷移する時に呼ばれる
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?){
+        
+        /** 遷移先画面のインスタンスinputViewControllerを取得する **/
         let inputViewController:InputViewController = segue.destinationViewController as! InputViewController
         
+        print("OK-0")
         if segue.identifier == "cellSegue" {
+            print("OK-1")
             /**
              セルをタップした時は先ほど設定したIdentifierがcellSegueであるsegueが発行されます。IdentifierがcellSegueのときはすでに作成済みのタスクを編集するときなので配列taskArrayから該当するTaskクラスのインスタンスを取り出してinputViewControllerのtaskプロパティに設定します。**/
             let indexPath = self.tableView.indexPathForSelectedRow
-            inputViewController.task = taskArray[indexPath!.row]
+            print("OK-2")
+            print( indexPath!.row )
+            inputViewController.task = taskArray[indexPath!.row]  /** データの引き渡し **/
         } else {
             /**
              +ボタンをタップした時はTaskクラスのインスタンスを生成して、初期値として現在時間と、プライマリキーであるIDに値を設定します。taskArray.max("id")ですでに存在しているタスクのidのうち最大のものを取得し、1を足すことで他のIDと重ならない値を指定します。**/
