@@ -144,8 +144,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             の追記も同時にしないと、”inputViewController.task =”でエラーになる。****/
     /***** add by『6.7 画面遷移する時にデータを渡す』*/
     
+     
+    /***** add by『6.8 タスク作成/編集画面から戻ってきた時に画面を更新する』*/
+     /**
+     タスク作成/編集画面から戻ってきた時に画面を更新する処理を実装します。
+     viewWillAppear:メソッドを追加し、UITableViewクラスのreloadDataメソッドを呼ぶことでタスク作成/編集画面で新規作成/編集したタスクの情報をTableViewに反映させます。**/
+    // 入力画面から戻ってきた時に TableView を更新させる
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+    }
+    /***** add by『6.8 タスク作成/編集画面から戻ってきた時に画面を更新する』*/
     
-    
-
 }
 
