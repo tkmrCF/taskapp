@@ -88,10 +88,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     // MARK: UITableViewDelegateプロトコルのメソッド
-    // 各セルを選択した時に実行されるメソッド
+    // 各セルを選択した時に実行されるメソッド（セルをタップした時）
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         /****** add by『5.3 ViewControllerからInputViewControllerに遷移させる』*/
         performSegueWithIdentifier("cellSegue",sender: nil) // ←追加する
+        /** セルをタップした時と　+ボタンをタップした時とを区別するため **/
     }
     
     // セルが削除が可能なことを伝えるメソッド
@@ -112,6 +113,38 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         /***** add by『6.6 TableViewのプロトコルメソッドの中身を実装する』*/
     }
+    
+    
+    /***** add by『6.7 画面遷移する時にデータを渡す』*/
+    // segue で画面遷移するに呼ばれる
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?){
+        let inputViewController:InputViewController = segue.destinationViewController as! InputViewController
+        
+        if segue.identifier == "cellSegue" {
+            /**
+             セルをタップした時は先ほど設定したIdentifierがcellSegueであるsegueが発行されます。IdentifierがcellSegueのときはすでに作成済みのタスクを編集するときなので配列taskArrayから該当するTaskクラスのインスタンスを取り出してinputViewControllerのtaskプロパティに設定します。**/
+            let indexPath = self.tableView.indexPathForSelectedRow
+            inputViewController.task = taskArray[indexPath!.row]
+        } else {
+            /**
+             +ボタンをタップした時はTaskクラスのインスタンスを生成して、初期値として現在時間と、プライマリキーであるIDに値を設定します。taskArray.max("id")ですでに存在しているタスクのidのうち最大のものを取得し、1を足すことで他のIDと重ならない値を指定します。**/
+            let task = Task()
+            task.date = NSDate()
+            
+            if taskArray.count != 0 {
+                task.id = taskArray.max("id")! + 1
+            }
+            
+            inputViewController.task = task
+        }
+    }
+    /***** 上記追加にあたり、注意事項：  InputViewController.swiftに
+            let realm = try! Realm()
+            var task:Task! 
+            の追記も同時にしないと、”inputViewController.task =”でエラーになる。****/
+    /***** add by『6.7 画面遷移する時にデータを渡す』*/
+    
+    
     
 
 }

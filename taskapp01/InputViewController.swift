@@ -7,12 +7,18 @@
 //
 
 import UIKit
+import RealmSwift
+
 
 class InputViewController: UIViewController {
 
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var contentsTextView: UITextView!
     @IBOutlet weak var datePicker: UIDatePicker!
+    
+    let realm = try! Realm()
+    var task:Task!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
