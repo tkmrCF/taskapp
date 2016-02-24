@@ -43,6 +43,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="tableView" destination="3La-xG-7TK" id="lny-4N-0ep"/>
                         <segue destination="G8r-29-YQy" kind="show" id="XAG-nN-EuD"/>
                     </connections>
                 </viewController>
