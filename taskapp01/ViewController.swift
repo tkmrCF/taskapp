@@ -35,7 +35,6 @@ class Task: Object {
 }
 
 
-
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource  {
 
     override func viewDidLoad() {
@@ -64,7 +63,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     // MARK: UITableViewDataSourceプロトコルのメソッド
     // データの数（＝セルの数）を返すメソッド
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        // return 0               ***cheng
+        return taskArray.count  // ←追加する by 6.6
     }
     
     // 各セルの内容を返すメソッド
@@ -72,12 +72,26 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         // 再利用可能な cell を得る
         let cell: UITableViewCell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "Cell")
         
+        /***** add by『6.6 TableViewのプロトコルメソッドの中身を実装する』*/
+        //Cellに値を設定する// ←以降、実際のデータを表示するように修正/追加する
+        let task = taskArray[indexPath.row]
+        cell.textLabel?.text = task.title
+        
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm"
+        
+        let dateString:String = formatter.stringFromDate(task.date)
+        cell.detailTextLabel?.text = dateString
+        /***** add by『6.6 TableViewのプロトコルメソッドの中身を実装する』*/
+        
         return cell
     }
     
     // MARK: UITableViewDelegateプロトコルのメソッド
     // 各セルを選択した時に実行されるメソッド
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        /****** add by『5.3 ViewControllerからInputViewControllerに遷移させる』*/
+        performSegueWithIdentifier("cellSegue",sender: nil) // ←追加する
     }
     
     // セルが削除が可能なことを伝えるメソッド
@@ -87,12 +101,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     // Delete ボタンが押された時に呼ばれるメソッド
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        
+        /***** add by『6.6 TableViewのプロトコルメソッドの中身を実装する』*/
+        if editingStyle == UITableViewCellEditingStyle.Delete {
+            // データベースから削除する  // ←以降追加する
+            try! realm.write {
+                self.realm.delete(self.taskArray[indexPath.row])
+                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
+            }
+        }
+        /***** add by『6.6 TableViewのプロトコルメソッドの中身を実装する』*/
     }
     
-    // 各セルを選択した時に実行されるメソッド
-    func tableView(tableView: UITableView, didSelectRowAtIndexPathindexPath: NSIndexPath) {
-        performSegueWithIdentifier("cellSegue",sender: nil) // ←追加する
-    }
 
 }
 
