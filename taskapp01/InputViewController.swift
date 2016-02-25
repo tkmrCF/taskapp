@@ -87,6 +87,32 @@ class InputViewController: UIViewController {
         // キーボードを閉じる
         view.endEditing(true)
     }
+ 
+    /***** add by『7.4 ローカル通知を設定する』*/
+    // タスクのローカル通知を設定する
+    func setNotification(task: Task) {
+        
+        // すでに同じタスクが登録されていたらキャンセルする
+        for notification in UIApplication.sharedApplication().scheduledLocalNotifications! {
+            if notification.userInfo!["id"] as! Int == task.id {
+                UIApplication.sharedApplication().cancelLocalNotification(notification)
+                break   // breakに来るとforループから抜け出せる
+            }
+        }
+        
+        let notification = UILocalNotification()
+        
+        notification.fireDate = task.date
+        notification.timeZone = NSTimeZone.defaultTimeZone()
+        notification.alertBody = "\(task.title)"
+        notification.soundName = UILocalNotificationDefaultSoundName
+        notification.userInfo = ["id":task.id]
+        UIApplication.sharedApplication().scheduleLocalNotification(notification)
+        
+    }
+    /***** add by『7.4 ローカル通知を設定する』*/
+    
+    
     
 }
 

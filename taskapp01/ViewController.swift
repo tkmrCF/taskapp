@@ -108,6 +108,20 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         /***** add by『6.6 TableViewのプロトコルメソッドの中身を実装する』*/
         if editingStyle == UITableViewCellEditingStyle.Delete {
+            
+            /***** add by『7.5 タスクを削除するときに通知をキャンセルする』*/
+             // ローカル通知をキャンセルする
+            let task = taskArray[indexPath.row]
+            
+            for notification in UIApplication.sharedApplication().scheduledLocalNotifications! {
+                if notification.userInfo!["id"] as! Int == task.id {
+                    UIApplication.sharedApplication().cancelLocalNotification(notification)
+                    break
+                }
+            }
+            /***** add by『7.5 タスクを削除するときに通知をキャンセルする』*/
+            
+            
             // データベースから削除する  // ←以降追加する
             try! realm.write {
                 self.realm.delete(self.taskArray[indexPath.row])
