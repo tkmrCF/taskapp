@@ -77,8 +77,13 @@ class InputViewController: UIViewController {
             self.realm.add(self.task, update: true)
         }
         
+        // 7.4 ローカル通知を設定する
+        // 当初この設定が抜けてたため、アラームが起動せずでした。
+        setNotification(task)
+        
         super.viewWillDisappear(animated)
     }
+    
     
     /**
     dismissKeyboardメソッドにはキーボードを閉じる処理であるendEditing(true)を呼び出します。
@@ -87,6 +92,7 @@ class InputViewController: UIViewController {
         // キーボードを閉じる
         view.endEditing(true)
     }
+    
  
     /***** add by『7.4 ローカル通知を設定する』*/
     // タスクのローカル通知を設定する
