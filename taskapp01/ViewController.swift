@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-
+/*  TaskModel.swift に　移動。
 class Task: Object {
     // 管理用 ID。プライマリーキー
     dynamic var id = 0
@@ -33,10 +33,12 @@ class Task: Object {
         return "id"
     }
 }
+*/
 
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource  {
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -52,6 +54,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
      
     // Realmインスタンスを取得する
     let realm = try! Realm()  // ←追加
+    var task:Task!
+    
+    
     
     // DB内のタスクが格納されるリスト。
     // 日付近い順\順でソート：降順
