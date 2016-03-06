@@ -49,7 +49,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="SearchBarCategory" destination="r99-3z-RdF" id="kQC-nl-c2c"/>
-                        <outlet property="SearchCategory" destination="r99-3z-RdF" id="Bx5-Vx-CTX"/>
                         <outlet property="tableView" destination="3La-xG-7TK" id="lny-4N-0ep"/>
                         <segue destination="G8r-29-YQy" kind="show" identifier="cellSegue" id="fkV-AW-IZr"/>
                     </connections>
