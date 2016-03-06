@@ -51,6 +51,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     /***************  add by『6.5 Realm のデータベースファイル』*/
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var SearchBarCategory: UISearchBar!
      
     // Realmインスタンスを取得する
     let realm = try! Realm()  // ←追加
@@ -58,7 +59,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     
     
-    // DB内のタスクが格納されるリスト。
+    // DB内のタスクデータが格納されるリスト。
     // 日付近い順\順でソート：降順
     // 以降内容をアップデートするとリスト内は自動的に更新される。
     let taskArray = try! Realm().objects(Task).sorted("date",ascending: false)   // ←追加
