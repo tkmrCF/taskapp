@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		21CD4F5467604CE49A980385 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01355A0331D4AFDD6B254F2B /* Pods.framework */; };
 		A62B00621C7C4510008AAD36 /* InputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62B00611C7C4510008AAD36 /* InputViewController.swift */; };
+		A654A0E01C8BFEC8001AEBE0 /* SearchBarCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A654A0DF1C8BFEC8001AEBE0 /* SearchBarCategory.swift */; };
 		A69FAA891C870E850036228D /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A69FAA881C870E850036228D /* TaskModel.swift */; };
 		A6D3D0591C7995500047F025 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D3D0581C7995500047F025 /* AppDelegate.swift */; };
 		A6D3D05B1C7995500047F025 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D3D05A1C7995500047F025 /* ViewController.swift */; };
@@ -22,6 +23,7 @@
 		1D6E26B2AD1D36A349A2B189 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		74B5B1B9BDA71FF34467511C /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		A62B00611C7C4510008AAD36 /* InputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputViewController.swift; sourceTree = "<group>"; };
+		A654A0DF1C8BFEC8001AEBE0 /* SearchBarCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBarCategory.swift; sourceTree = "<group>"; };
 		A69FAA881C870E850036228D /* TaskModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskModel.swift; sourceTree = "<group>"; };
 		A6D3D0551C7995500047F025 /* taskapp01.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = taskapp01.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6D3D0581C7995500047F025 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 				A69FAA881C870E850036228D /* TaskModel.swift */,
 				A62B00611C7C4510008AAD36 /* InputViewController.swift */,
 				A6D3D05C1C7995500047F025 /* Main.storyboard */,
+				A654A0DF1C8BFEC8001AEBE0 /* SearchBarCategory.swift */,
 				A6D3D05F1C7995500047F025 /* Assets.xcassets */,
 				A6D3D0611C7995500047F025 /* LaunchScreen.storyboard */,
 				A6D3D0641C7995500047F025 /* Info.plist */,
@@ -218,6 +221,7 @@
 			files = (
 				A62B00621C7C4510008AAD36 /* InputViewController.swift in Sources */,
 				A6D3D05B1C7995500047F025 /* ViewController.swift in Sources */,
+				A654A0E01C8BFEC8001AEBE0 /* SearchBarCategory.swift in Sources */,
 				A69FAA891C870E850036228D /* TaskModel.swift in Sources */,
 				A6D3D0591C7995500047F025 /* AppDelegate.swift in Sources */,
 			);

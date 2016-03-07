@@ -36,12 +36,19 @@ class Task: Object {
 */
 
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource  {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate  {
 
+
+    
+    @IBOutlet weak var SearchBar: UISearchBar!
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        SearchBar.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -51,19 +58,68 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     /***************  add by『6.5 Realm のデータベースファイル』*/
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var SearchBarCategory: UISearchBar!
-     
+
+    
+
     // Realmインスタンスを取得する
     let realm = try! Realm()  // ←追加
     var task:Task!
-    
+    var Category:String!
+
     
     
     // DB内のタスクデータが格納されるリスト。
     // 日付近い順\順でソート：降順
     // 以降内容をアップデートするとリスト内は自動的に更新される。
-    let taskArray = try! Realm().objects(Task).sorted("date",ascending: false)   // ←追加
+    var taskArray = try! Realm().objects(Task).sorted("date",ascending: false)   // ←追加
     /***************  add by『6.5 Realm のデータベースファイル』*/
+    //let filterString = String("category = '\(SearchBar.text!)'")
+    var categoryArray = try! Realm().objects(Task).sorted("date", ascending: false)
+
+
+    /* テキストが変更される毎に呼ばれる */
+    func searchBar( SearchBar: UISearchBar, textDidChange searchText: String) {
+        print("Search1")
+        
+        Category = SearchBar.text!
+        print( Category )
+        if Category == "" {
+            print("Search1-1")
+            taskArray = realm.objects(Task).sorted("date", ascending: false)
+            tableView.reloadData()
+        }
+        
+    }
+    /*
+    Searchボタンが押された時に呼ばれる
+    */
+    func searchBarSearchButtonClicked(SearchBar: UISearchBar) {
+        print("Search2")
+        let filterString = String("category = '\(SearchBar.text!)'")
+        Category = SearchBar.text!
+        print( filterString )
+        print( Category )
+        
+        if Category == nil {
+            print("Search2-1")
+            
+        }
+        else{
+
+            // 文字列で検索、日付未来順ソート：降順
+            taskArray = realm.objects(Task).filter("category = '\(SearchBar.text!)'").sorted("date", ascending: false)
+        
+            print("Search2-2")
+        }
+        
+        tableView.reloadData()
+        
+    }
+    func searchBarCancelButtonClicked(SearchBar: UISearchBar) {
+        print("Search3")
+    }
+
+    
     
     
     // MARK: UITableViewDataSourceプロトコルのメソッド
